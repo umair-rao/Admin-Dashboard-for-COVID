@@ -18,7 +18,8 @@ function App() {
 
   return (
     <div className="App">
-     <Navbar/>
+      <div className='container'>
+      <Navbar/>
      <div className='app-center'>
       <DataSummary/>
       <BarLineChart detail={covidData.covidDetail}/>
@@ -26,8 +27,10 @@ function App() {
      <div className='footer-charts'>
       <BarChart detail={covidData.covidDetail}/>
       <DoughnutChart detail={covidData.covidDetail}/>
-      <LineChart detail={covidData.covidDetail}/>
+
      </div>
+     <LineChart detail={covidData.covidDetail}/>
+      </div>
     </div>
   );
 }

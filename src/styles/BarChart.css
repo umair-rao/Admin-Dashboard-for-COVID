@@ -1,8 +1,4 @@
 .BarChart {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 border-radius: 16px;
 color: aliceblue;
 background: #0918230D;

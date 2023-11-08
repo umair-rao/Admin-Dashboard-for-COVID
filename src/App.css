@@ -6,6 +6,11 @@
 
   .App {
     background-color: rgb(32, 16, 65);
+    width: 100vw;
+  }
+  .container {
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
   }
 
   .app-center {

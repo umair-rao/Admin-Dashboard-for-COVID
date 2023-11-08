@@ -129,7 +129,7 @@ const BarChart = ({ detail }) => {
       plugins: {
         title: {
           display: true,
-          text: "Chart.js Bar Chart - Stacked",
+          text: "Cases vs Deaths",
         },
       },
       responsive: true,

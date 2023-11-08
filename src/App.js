@@ -1,23 +1,33 @@
-import logo from './logo.svg';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
+import BarChart from './components/BarChart';
+import BarLineChart from './components/BarLineChart';
+import DataSummary from './components/DataSummary';
+import DoughnutChart from './components/DoughnutChart';
+import LineChart from './components/LineChart';
+import Navbar from './components/Navbar';
+import { useEffect } from 'react';
+import { fetchCovidDetail } from './Redux/CovidDetail';
 
 function App() {
+  const dispatch = useDispatch();
+  const covidData = useSelector((state) => state.covidDetail);
+  useEffect(() => {
+      dispatch(fetchCovidDetail());
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Navbar/>
+     <div className='app-center'>
+      <DataSummary/>
+      <BarLineChart detail={covidData.covidDetail}/>
+     </div>
+     <div className='footer-charts'>
+      <BarChart detail={covidData.covidDetail}/>
+      <DoughnutChart detail={covidData.covidDetail}/>
+      <LineChart detail={covidData.covidDetail}/>
+     </div>
     </div>
   );
 }

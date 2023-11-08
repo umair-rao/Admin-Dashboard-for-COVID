@@ -1,0 +1,10 @@
+.DoughnutChart {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+    background: #0918230D;
+    box-shadow: 2px 2px 4px 0px #0F0A0F80, -2px -2px 4px 0px #29527180, 0px 1px 250px 0px #0510181A inset;
+    border-radius: 2%;
+}

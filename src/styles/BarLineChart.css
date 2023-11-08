@@ -1,0 +1,52 @@
+.barchart {
+    color: aliceblue;
+    background: #0918230D;
+    box-shadow: 2px 2px 4px 0px #0F0A0F80, -2px -2px 4px 0px #29527180, 0px 1px 250px 0px #0510181A inset;
+    border-radius: 2%;
+    width: 80%
+
+}
+
+.barchart-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.3rem;
+}
+
+.bar-data-name {
+    display: flex;
+    align-items: center;
+}
+
+.bar-data-name li {
+    list-style-type: none;
+    display: inline;
+    margin: 10px;
+}
+
+.blueDot {
+    width: 16px;
+height: 16px;
+border-radius: 4px;
+background-color: #009BF2;
+}
+
+.redDot {
+    background-color: #FB4540;
+}
+
+.user-drop {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 172px;
+    height: 48px;
+    top: 47px;
+    left: 1228px;
+    border-radius: 10px;
+    border: 1px solid #AEABD8;
+    opacity: 0.75;
+}
+
+

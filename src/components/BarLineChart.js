@@ -35,7 +35,15 @@ const BarLineChart = ({ detail }) => {
   const [europeCount, setEuropeCount] = useState(null)
   const [africaCount, setAfricaCount] = useState(null)
   const [australiaCount, setAustraliaCount] = useState(null)
-  
+
+
+  const [asiaRecoveredCount, setAsiaRecoveredCount] = useState(null)
+  const [northAmericaRecoveredCount, setNorthAmericaRecoveredCount] = useState(null)
+  const [southAmericaRecoveredCount, setSouthAmericaRecoveredCount] = useState(null)
+  const [europeRecoveredCount, setEuropeRecoveredCount] = useState(null)
+  const [africaRecoveredCount, setAfricaRecoveredCount] = useState(null)
+  const [australiaRecoveredCount, setAustraliaRecoveredCount] = useState(null)
+
   useEffect(() => {
     countCases();
   }, []);
@@ -47,24 +55,38 @@ const BarLineChart = ({ detail }) => {
     let totalEuropeCases = 0;
     let totalAfricaCases = 0;
     let totalAustraliaCases = 0;
+
+    let totalAsiaRecoveredCases = 0;
+    let totalNorthAmericaRecoveredCases = 0;
+    let totalSouthAmericaRecoveredCases = 0;
+    let totalEuropeRecoveredCases = 0;
+    let totalAfricaRecoveredCases = 0;
+    let totalAustraliaRecoveredCases = 0;
+
     detail.map((detail) => {
       if (detail.continent === 'Asia') {
         totalAsiaCases += detail.cases;
+        totalAsiaRecoveredCases += detail.recovered
       }
       if (detail.continent === 'North America') {
         totalNorthAmericaCases += detail.cases;
+        totalNorthAmericaRecoveredCases += detail.recovered
       }
       if (detail.continent === 'South America') {
         totalSouthAmericaCases += detail.cases;
+        totalSouthAmericaRecoveredCases += detail.recovered
       }
       if (detail.continent === 'Europe') {
         totalEuropeCases += detail.cases;
+        totalEuropeRecoveredCases += detail.recovered
       }
       if (detail.continent === 'Africa') {
         totalAfricaCases += detail.cases;
+        totalAfricaRecoveredCases += detail.recovered
       }
       if (detail.continent === 'Australia-Oceania') {
         totalAustraliaCases += detail.cases;
+        totalAustraliaRecoveredCases += detail.recovered
       }
     });
     setAsiaCount(totalAsiaCases)
@@ -73,6 +95,13 @@ const BarLineChart = ({ detail }) => {
     setEuropeCount(totalEuropeCases);
     setAfricaCount(totalAfricaCases);
     setAustraliaCount(totalAustraliaCases)
+
+    setAsiaRecoveredCount(totalAsiaRecoveredCases);
+    setNorthAmericaRecoveredCount(totalNorthAmericaRecoveredCases);
+    setSouthAmericaRecoveredCount(totalSouthAmericaRecoveredCases);
+    setEuropeRecoveredCount(totalEuropeRecoveredCases)
+    setAfricaRecoveredCount(totalAfricaRecoveredCases);
+    setAustraliaRecoveredCount(totalAustraliaRecoveredCases)
   };
 
     const [chartData, setChartData] = useState({
@@ -87,21 +116,20 @@ const BarLineChart = ({ detail }) => {
             datasets: [
                 {
                     type: 'line',
-                    label: 'User Sign up',
+                    label: 'COVID-19 Recovered',
                     borderColor: 'rgb(53, 162, 235)',
                     backgroundColor: '#009BF2',
                     borderWidth: 2,
                     fill: false,
-                    data: [18127, 22201, 19490, 17938, 24182, 17842, 22475],
-                    order: 1
+                    data: [asiaRecoveredCount, northAmericaRecoveredCount, southAmericaRecoveredCount, europeRecoveredCount, africaRecoveredCount, australiaRecoveredCount],
+                    order: 0,
                   },
                   {
                     type: 'bar',
                     label: 'COVID-19 Cases',
                     data: [asiaCount, northAmericaCount, southAmericaCount, europeCount, africaCount, australiaCount],
-                    borderColor: 'rgb(53, 162, 235)',
                     backgroundColor: '#FB4540',
-                    order: 0,
+                    order: 1,
                   }, 
             ]
         })
@@ -112,7 +140,7 @@ const BarLineChart = ({ detail }) => {
                 },
                 title: {
                     display: true,
-                    text: 'Daily Revenue'
+                    text: 'Real Time COVID-19 Data'
                 }
             },
             maintainAspectRatio: false,
@@ -124,14 +152,14 @@ const BarLineChart = ({ detail }) => {
     <div className="barchart">
       <div className="barchart-top">
         <div>
-          <h2>User Traffic</h2>
+          <h2>COVID-19 Data</h2>
         </div>
         <div className="bar-data-name">
           <ul>
             <li className="blueDot">&nbsp;&nbsp; &nbsp;&nbsp;</li>
-            <li>User Sign up</li>
+            <li>COVID-19 Recovered</li>
             <li className="blueDot redDot">&nbsp;&nbsp; &nbsp;&nbsp;</li>
-            <li>User Subscribed</li>
+            <li>COVID-19 Cases</li>
           </ul>
           <div className="user-drop">
             <p>Current Year</p>

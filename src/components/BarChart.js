@@ -23,24 +23,24 @@ ChartJS.register(
 
 const BarChart = ({ detail }) => {
 
-  const [asiaCaseCount, setAsiaCaseCount] = useState(null)
-  const [northAmericaCaseCount, setNorthAmericaCaseCount] = useState(null)
-  const [southAmericaCaseCount, setSouthAmericaCaseCount] = useState(null)
-  const [europeCaseCount, setEuropeCaseCount] = useState(null)
-  const [africaCaseCount, setAfricaCaseCount] = useState(null)
-  const [australiaCaseCount, setAustraliaCaseCount] = useState(null)
+  const [asiaCaseCount, setAsiaCaseCount] = useState(null);
+  const [northAmericaCaseCount, setNorthAmericaCaseCount] = useState(null);
+  const [southAmericaCaseCount, setSouthAmericaCaseCount] = useState(null);
+  const [europeCaseCount, setEuropeCaseCount] = useState(null);
+  const [africaCaseCount, setAfricaCaseCount] = useState(null);
+  const [australiaCaseCount, setAustraliaCaseCount] = useState(null);
 
-
-  const [asiaDeathCount, setAsiaDeathCount] = useState(null)
-  const [northAmericaDeathCount, setNorthAmericaDeathCount] = useState(null)
-  const [southAmericaDeathCount, setSouthAmericaDeathCount] = useState(null)
-  const [europeDeathCount, setEuropeDeathCount] = useState(null)
-  const [africaDeathCount, setAfricaDeathCount] = useState(null)
-  const [australiaDeathCount, setAustraliaDeathCount] = useState(null)
+  const [asiaDeathCount, setAsiaDeathCount] = useState(null);
+  const [northAmericaDeathCount, setNorthAmericaDeathCount] = useState(null);
+  const [southAmericaDeathCount, setSouthAmericaDeathCount] = useState(null);
+  const [europeDeathCount, setEuropeDeathCount] = useState(null);
+  const [africaDeathCount, setAfricaDeathCount] = useState(null);
+  const [australiaDeathCount, setAustraliaDeathCount] = useState(null);
 
   useEffect(() => {
     countCases();
-  }, []);
+    console.log(africaCaseCount);
+  }, [detail]);
 
   const countCases = () => {
     let totalAsiaCases = 0;
@@ -59,43 +59,44 @@ const BarChart = ({ detail }) => {
 
     detail.map((detail) => {
       if (detail.continent === 'Asia') {
-        totalAsiaCases += detail.activePerOneMillion
-        totalAsiaDeathCases += detail.recoveredPerOneMillion
+        totalAsiaCases += detail.activePerOneMillion;
+        totalAsiaDeathCases += detail.recoveredPerOneMillion;
       }
       if (detail.continent === 'North America') {
-        totalNorthAmericaCases += detail.recoveredPerOneMillion
-        totalNorthAmericaDeathCases += detail.recoveredPerOneMillion
+        totalNorthAmericaCases += detail.recoveredPerOneMillion;
+        totalNorthAmericaDeathCases += detail.recoveredPerOneMillion;
       }
       if (detail.continent === 'South America') {
-        totalSouthAmericaCases += detail.recoveredPerOneMillion
-        totalSouthAmericaDeathCases += detail.recoveredPerOneMillion
+        totalSouthAmericaCases += detail.recoveredPerOneMillion;
+        totalSouthAmericaDeathCases += detail.recoveredPerOneMillion;
       }
       if (detail.continent === 'Europe') {
-        totalEuropeCases += detail.recoveredPerOneMillion
-        totalEuropeDeathCases += detail.recoveredPerOneMillion
+        totalEuropeCases += detail.recoveredPerOneMillion;
+        totalEuropeDeathCases += detail.recoveredPerOneMillion;
       }
       if (detail.continent === 'Africa') {
-        totalAfricaCases += detail.recoveredPerOneMillion
-        totalAfricaDeathCases += detail.recoveredPerOneMillion
+        totalAfricaCases += detail.recoveredPerOneMillion;
+        totalAfricaDeathCases += detail.recoveredPerOneMillion;
       }
       if (detail.continent === 'Australia-Oceania') {
-        totalAustraliaCases += detail.recoveredPerOneMillion
-        totalAustraliaDeathCases += detail.recoveredPerOneMillion
+        totalAustraliaCases += detail.recoveredPerOneMillion;
+        totalAustraliaDeathCases += detail.recoveredPerOneMillion;
       }
     });
-    setAsiaCaseCount(totalAsiaCases)
+
+    setAsiaCaseCount(totalAsiaCases);
     setNorthAmericaCaseCount(totalNorthAmericaCases);
-    setSouthAmericaCaseCount(totalSouthAmericaCases)
+    setSouthAmericaCaseCount(totalSouthAmericaCases);
     setEuropeCaseCount(totalEuropeCases);
     setAfricaCaseCount(totalAfricaCases);
-    setAustraliaCaseCount(totalAustraliaCases)
+    setAustraliaCaseCount(totalAustraliaCases);
 
     setAsiaDeathCount(totalAsiaDeathCases);
     setNorthAmericaDeathCount(totalNorthAmericaDeathCases);
     setSouthAmericaDeathCount(totalSouthAmericaDeathCases);
-    setEuropeDeathCount(totalEuropeDeathCases)
+    setEuropeDeathCount(totalEuropeDeathCases);
     setAfricaDeathCount(totalAfricaDeathCases);
-    setAustraliaDeathCount(totalAustraliaDeathCases)
+    setAustraliaDeathCount(totalAustraliaDeathCases);
   };
 
   const [chartData, setChartData] = useState({
@@ -117,7 +118,7 @@ const BarChart = ({ detail }) => {
           order: 0,
         },
         {
-          label: "Deaths per pne million",
+          label: "Deaths per one million",
           data: [asiaDeathCount, northAmericaDeathCount, southAmericaDeathCount, europeDeathCount, africaDeathCount, australiaDeathCount],
           backgroundColor: "#FB4540",
           order: 1,
@@ -141,7 +142,7 @@ const BarChart = ({ detail }) => {
         },
       },
     });
-  }, []);
+  }, [asiaCaseCount, northAmericaCaseCount, southAmericaCaseCount, europeCaseCount, africaCaseCount, australiaCaseCount, asiaDeathCount, northAmericaDeathCount, southAmericaDeathCount, europeDeathCount, africaDeathCount, australiaDeathCount]);
 
   return (
     <div className="BarChart">
